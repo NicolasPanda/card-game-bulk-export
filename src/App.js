@@ -4,13 +4,13 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="flex h-full min-h-screen flex-col bg-gray-800 text-gray-200">
+    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-800">
       <Header />
 
-      <div className="my-14 flex flex-col items-center justify-center gap-14">
-        <Cards name="hello" />
-        <Cards name="hello" />
-        <Cards name="hello" />
+      <div className="flex flex-col items-center justify-center my-14 gap-14">
+        <Cards />
+        <Cards />
+        <Cards />
       </div>
     </div>
   );
