@@ -3,29 +3,40 @@ import React, { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import JSZip from "jszip";
 import FileSaver from "file-saver";
-import Cards from "../components/Cards";
+import ConcertCards from "../components/ConcertCards";
 import Header from "../components/Header";
 
-const baseURL = "http://localhost:1337/";
+const baseURL = "http://localhost:1337/concert";
 
 function Concert() {
   const [concertData, setConcertData] = useState([]);
+  const [zip] = useState(new JSZip());
   const [concertCardsNumber, setConcertCardsNumber] = useState(0);
   const cardsRef = useRef([]);
 
   useEffect(() => {
     axios.get(baseURL).then((res) => {
       renderCard(res.data);
-      setConcertCardsNumber(res.data.values.length);
+      setConcertCardsNumber(res.data.length);
     });
   }, []);
+
+  useEffect(() => {
+    cardsRef.current.forEach((element, index) => {
+      html2canvas(element).then((canvas) => {
+        canvas.toBlob((blob) => {
+          zip.file(`Cards_Concert_${index + 1}.png`, blob);
+        });
+      });
+    });
+  }, [concertData, zip]);
 
   const renderCard = (Data) => {
     if (Data === null) {
       return null;
     }
     var newData = [];
-    Data.values.forEach((card) => {
+    Data.forEach((card) => {
       var lootNumber = 0;
       var loseNumber = 0;
       var guitarist = 0;
@@ -118,19 +129,8 @@ function Concert() {
   };
 
   const handleExportCards = () => {
-    const zip = new JSZip();
-
-    cardsRef.current.forEach((element, index) => {
-      html2canvas(element).then((canvas) => {
-        canvas.toBlob((blob) => {
-          zip.file(`Cards_Concert_${index}.png`, blob);
-          if (index === cardsRef.current.length - 1) {
-            zip.generateAsync({ type: "blob" }).then((content) => {
-              FileSaver.saveAs(content, "download.zip");
-            });
-          }
-        });
-      });
+    zip.generateAsync({ type: "blob" }).then((content) => {
+      FileSaver.saveAs(content, "ConcertCards.zip");
     });
   };
 
@@ -140,13 +140,15 @@ function Concert() {
 
       <div className="my-14 flex flex-col items-center justify-center gap-14">
         <button
-          className="cursor-pointer rounded-full bg-pink-500 px-6 py-2 transition-all duration-200 hover:bg-pink-600 active:bg-pink-400"
+          className="cursor-pointer rounded-full bg-pink-500 px-8 py-4 transition-all duration-200 hover:bg-pink-600 active:bg-pink-400"
           onClick={handleExportCards}
         >
-          <span className="select-none">Export {concertCardsNumber} Cards</span>
+          <span className="select-none text-2xl font-bold">
+            Export {concertCardsNumber} Cards
+          </span>
         </button>
         {concertData.map((value, index) => (
-          <Cards
+          <ConcertCards
             {...value}
             key={index}
             innerRef={(element) => (cardsRef.current[index] = element)}

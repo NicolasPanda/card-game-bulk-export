@@ -2,7 +2,7 @@ import React from "react";
 
 import cardConcert from "../img/card-concert.png";
 
-function Cards({
+function ConcertCards({
   lootNumber,
   loseNumber,
   guitarist,
@@ -25,11 +25,19 @@ function Cards({
 
   return (
     <div
-      className="relative flex h-[679.5px] w-[403.5px] items-center justify-center bg-slate-200"
+      className="relative flex h-[679px] w-[403px] items-center justify-center bg-slate-200"
       ref={innerRef}
     >
-      <img className="absolute" src={cardConcert} alt="" />
-      <div className="absolute bottom-36 flex w-full justify-around px-4">
+      <img className="absolute h-full w-full" src={cardConcert} alt="" />
+      <div className="absolute top-4 flex w-full justify-between px-12">
+        <p className="text-center text-7xl font-extrabold text-rose-500">
+          {loseNumber}
+        </p>
+        <p className="text-center text-7xl font-extrabold text-yellow-500">
+          {lootNumber}
+        </p>
+      </div>
+      <div className="absolute bottom-28 flex w-full justify-around px-4">
         <p className={getClassName(guitaristColor)}>{guitarist}</p>
         <p className={getClassName(singerColor)}>{singer}</p>
         <p className={getClassName(drummerColor)}>{drummer}</p>
@@ -38,4 +46,4 @@ function Cards({
   );
 }
 
-export default Cards;
+export default ConcertCards;
