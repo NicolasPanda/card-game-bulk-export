@@ -5,6 +5,7 @@ import JSZip from "jszip";
 import FileSaver from "file-saver";
 import ConcertCards from "../components/ConcertCards";
 import Header from "../components/Header";
+import Button from "../components/Button";
 
 const baseURL = "http://localhost:1337/";
 
@@ -139,14 +140,10 @@ function Concert() {
       <Header />
 
       <div className="my-14 flex flex-col items-center justify-center gap-14">
-        <button
-          className="cursor-pointer rounded-full bg-pink-500 px-8 py-4 transition-all duration-200 hover:bg-pink-600 active:bg-pink-400"
+        <Button
           onClick={handleExportCards}
-        >
-          <span className="select-none text-2xl font-bold">
-            Export {concertCardsNumber} Cards
-          </span>
-        </button>
+          text={`Export ${concertCardsNumber} Cards`}
+        />
         {concertData.map((value, index) => (
           <ConcertCards
             {...value}
