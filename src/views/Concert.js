@@ -1,5 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import html2canvas from "html2canvas";
+import JSZip from "jszip";
+import FileSaver from "file-saver";
 import Cards from "../components/Cards";
 import Header from "../components/Header";
 
@@ -7,10 +10,13 @@ const baseURL = "http://localhost:1337/";
 
 function Concert() {
   const [concertData, setConcertData] = useState([]);
+  const [concertCardsNumber, setConcertCardsNumber] = useState(0);
+  const cardsRef = useRef([]);
 
   useEffect(() => {
     axios.get(baseURL).then((res) => {
       renderCard(res.data);
+      setConcertCardsNumber(res.data.values.length);
     });
   }, []);
 
@@ -111,13 +117,40 @@ function Concert() {
     setConcertData(newData);
   };
 
+  const handleExportCards = () => {
+    const zip = new JSZip();
+
+    cardsRef.current.forEach((element, index) => {
+      html2canvas(element).then((canvas) => {
+        canvas.toBlob((blob) => {
+          zip.file(`Cards_Concert_${index}.png`, blob);
+          if (index === cardsRef.current.length - 1) {
+            zip.generateAsync({ type: "blob" }).then((content) => {
+              FileSaver.saveAs(content, "download.zip");
+            });
+          }
+        });
+      });
+    });
+  };
+
   return (
     <div className="flex h-full min-h-screen flex-col bg-gray-800 text-gray-200">
       <Header />
 
       <div className="my-14 flex flex-col items-center justify-center gap-14">
+        <button
+          className="cursor-pointer rounded-full bg-pink-500 px-6 py-2 transition-all duration-200 hover:bg-pink-600 active:bg-pink-400"
+          onClick={handleExportCards}
+        >
+          <span className="select-none">Export {concertCardsNumber} Cards</span>
+        </button>
         {concertData.map((value, index) => (
-          <Cards {...value} key={index} />
+          <Cards
+            {...value}
+            key={index}
+            innerRef={(element) => (cardsRef.current[index] = element)}
+          />
         ))}
       </div>
     </div>

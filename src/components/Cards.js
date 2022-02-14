@@ -11,6 +11,7 @@ function Cards({
   singerColor,
   drummer,
   drummerColor,
+  innerRef,
 }) {
   const getClassName = (color) => {
     return `text-center text-8xl font-extrabold ${
@@ -23,7 +24,10 @@ function Cards({
   };
 
   return (
-    <div className="relative flex h-[679.5px] w-[403.5px] items-center justify-center bg-slate-200">
+    <div
+      className="relative flex h-[679.5px] w-[403.5px] items-center justify-center bg-slate-200"
+      ref={innerRef}
+    >
       <img className="absolute" src={cardConcert} alt="" />
       <div className="absolute bottom-36 flex w-full justify-around px-4">
         <p className={getClassName(guitaristColor)}>{guitarist}</p>
