@@ -6,7 +6,7 @@ import FileSaver from "file-saver";
 import ConcertCards from "../components/ConcertCards";
 import Header from "../components/Header";
 
-const baseURL = "http://localhost:1337/concert";
+const baseURL = "http://localhost:1337/";
 
 function Concert() {
   const [concertData, setConcertData] = useState([]);
@@ -15,7 +15,7 @@ function Concert() {
   const cardsRef = useRef([]);
 
   useEffect(() => {
-    axios.get(baseURL).then((res) => {
+    axios.get(baseURL + "concert").then((res) => {
       renderCard(res.data);
       setConcertCardsNumber(res.data.length);
     });
