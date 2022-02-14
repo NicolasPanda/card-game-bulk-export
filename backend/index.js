@@ -28,7 +28,7 @@ app.get("/", async (req, res) => {
     spreadsheetId,
     range: "Concert!B3:L",
   });
-
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.send(getRows.data);
 });
 

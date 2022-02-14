@@ -2,19 +2,34 @@ import React from "react";
 
 import cardConcert from "../img/card-concert.png";
 
-function Cards() {
+function Cards({
+  lootNumber,
+  loseNumber,
+  guitarist,
+  guitaristColor,
+  singer,
+  singerColor,
+  drummer,
+  drummerColor,
+}) {
+  const getClassName = (color) => {
+    return `text-center text-8xl font-extrabold ${
+      color === "green"
+        ? "text-green-600"
+        : color === "blue"
+        ? "text-blue-600"
+        : "text-red-600"
+    }`;
+  };
+
   return (
     <div className="relative flex h-[679.5px] w-[403.5px] items-center justify-center bg-slate-200">
       <img className="absolute" src={cardConcert} alt="" />
-      <p className="absolute font-extrabold text-blue-600 bottom-36 left-12 text-8xl">
-        3
-      </p>
-      <p className="absolute font-extrabold text-green-600 bottom-36 text-8xl">
-        6
-      </p>
-      <p className="absolute font-extrabold text-red-600 bottom-36 right-12 text-8xl">
-        2
-      </p>
+      <div className="absolute bottom-36 flex w-full justify-around px-4">
+        <p className={getClassName(guitaristColor)}>{guitarist}</p>
+        <p className={getClassName(singerColor)}>{singer}</p>
+        <p className={getClassName(drummerColor)}>{drummer}</p>
+      </div>
     </div>
   );
 }
