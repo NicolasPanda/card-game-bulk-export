@@ -11,8 +11,8 @@ const baseURL = "http://localhost:1337/";
 
 function Concert() {
   const [concertData, setConcertData] = useState([]);
-  const [zip] = useState(new JSZip());
   const [concertCardsNumber, setConcertCardsNumber] = useState(0);
+  const [zip] = useState(new JSZip());
   const cardsRef = useRef([]);
 
   useEffect(() => {
@@ -136,10 +136,10 @@ function Concert() {
   };
 
   return (
-    <div className="flex h-full min-h-screen flex-col bg-gray-800 text-gray-200">
+    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-800">
       <Header />
 
-      <div className="my-14 flex flex-col items-center justify-center gap-14">
+      <div className="flex flex-col items-center justify-center my-14 gap-14">
         <Button
           onClick={handleExportCards}
           text={`Export ${concertCardsNumber} Cards`}
