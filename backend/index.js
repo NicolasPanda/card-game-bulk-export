@@ -40,7 +40,7 @@ app.get("/artist/guitarist", async (req, res) => {
   res.send(getRows.data.values);
 });
 
-app.get("/artist/singer", async (req, res) => {
+app.get("/artist/signer", async (req, res) => {
   const getRows = await googleSheets.spreadsheets.values.get({
     auth,
     spreadsheetId,
