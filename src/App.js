@@ -3,6 +3,7 @@ import Home from "./views/Home";
 import "./index.css";
 import Concert from "./views/Concert";
 import Artist from "./views/Artist";
+import Artefact from "./views/Artefact";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/concert" element={<Concert />} />
       <Route path="/artist" element={<Artist />} />
+      <Route path="/artefact" element={<Artefact />} />
     </Routes>
   );
 }

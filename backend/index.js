@@ -60,4 +60,14 @@ app.get("/artist/drummer", async (req, res) => {
   res.send(getRows.data.values);
 });
 
+app.get("/artefact", async (req, res) => {
+  const getRows = await googleSheets.spreadsheets.values.get({
+    auth,
+    spreadsheetId,
+    range: "Artefact!A2:D",
+  });
+
+  res.send(getRows.data.values);
+});
+
 app.listen(1337, (req, res) => console.log("server running on 1337"));
