@@ -69,7 +69,7 @@ function Artist() {
         {signerData.map((data, index) => (
           <ArtistCards
             innerRef={(element) =>
-              (cardsRef.current[index + guitaristData.length] = element)
+              (cardsRef.current[guitaristData.length + index] = element)
             }
             stats={data}
             type={"signer"}
@@ -79,7 +79,7 @@ function Artist() {
           <ArtistCards
             innerRef={(element) =>
               (cardsRef.current[
-                index + guitaristData.length + signerData.length
+                guitaristData.length + signerData.length + index
               ] = element)
             }
             stats={data}
