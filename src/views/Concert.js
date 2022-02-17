@@ -40,6 +40,7 @@ function Concert() {
     Data.forEach((card) => {
       var lootNumber = 0;
       var loseNumber = 0;
+      var helpable = true;
       var guitarist = 0;
       var guitaristColor = "green";
       var singer = 0;
@@ -109,6 +110,9 @@ function Concert() {
           case 10:
             loseNumber = value;
             break;
+          case 11:
+            helpable = value;
+            break;
           default:
             break;
         }
@@ -117,6 +121,7 @@ function Concert() {
       var cardObject = {
         lootNumber,
         loseNumber,
+        helpable,
         guitarist,
         guitaristColor,
         singer,
@@ -136,10 +141,10 @@ function Concert() {
   };
 
   return (
-    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-800">
+    <div className="flex h-full min-h-screen flex-col bg-gray-800 text-gray-200">
       <Header />
 
-      <div className="flex flex-col items-center justify-center my-14 gap-14">
+      <div className="my-14 flex flex-col items-center justify-center gap-14">
         <Button
           onClick={handleExportCards}
           text={`Export ${concertCardsNumber} Cards`}

@@ -24,7 +24,7 @@ app.get("/concert", async (req, res) => {
   const getRows = await googleSheets.spreadsheets.values.get({
     auth,
     spreadsheetId,
-    range: "Concert!B3:L",
+    range: "Concert!B3:M",
   });
 
   res.send(getRows.data.values);

@@ -1,10 +1,12 @@
 import React from "react";
 
 import cardConcert from "../img/card-concert.png";
+import noHelp from "../img/no-help.png";
 
 function ConcertCards({
   lootNumber,
   loseNumber,
+  helpable,
   guitarist,
   guitaristColor,
   singer,
@@ -23,12 +25,16 @@ function ConcertCards({
     }`;
   };
 
+  console.log(helpable);
   return (
     <div
       className="relative flex h-[679px] w-[403px] items-center justify-center bg-slate-200"
       ref={innerRef}
     >
       <img className="absolute h-full w-full" src={cardConcert} alt="" />
+      {helpable === "FALSE" && (
+        <img className="absolute top-6 h-20" src={noHelp} alt="" />
+      )}
       <div className="absolute top-4 flex w-full justify-between px-12">
         <p className="text-center text-7xl font-extrabold text-rose-500">
           {loseNumber}
