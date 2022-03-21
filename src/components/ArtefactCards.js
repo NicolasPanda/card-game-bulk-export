@@ -7,7 +7,7 @@ import drummerImage from "../img/card-artefact-drummer.png";
 function ArtefactCards({ innerRef, stats = [1, 2, 3], type = "drummer" }) {
   return (
     <div
-      className="relative flex h-[679px] w-[403px] items-center justify-center bg-slate-200"
+      className="relative flex h-[1021px] w-[735px] items-center justify-center bg-slate-200"
       ref={innerRef}
     >
       {type === "guitarist" && (

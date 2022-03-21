@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "KeeponTruckin";
+  src: url("asset/KEEPT.TTF");
+}
+
+p {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
