@@ -52,7 +52,7 @@ function Artist() {
   };
 
   return (
-    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-800">
+    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-500">
       <Header />
       <div className="flex flex-col items-center justify-center my-14 gap-14">
         <Button
@@ -64,6 +64,7 @@ function Artist() {
             innerRef={(element) => (cardsRef.current[index] = element)}
             stats={data}
             type={"guitarist"}
+            key={"guitarist" + index}
           />
         ))}
         {signerData.map((data, index) => (
@@ -73,6 +74,7 @@ function Artist() {
             }
             stats={data}
             type={"signer"}
+            key={"signer" + index}
           />
         ))}
         {drummerData.map((data, index) => (
@@ -84,6 +86,7 @@ function Artist() {
             }
             stats={data}
             type={"drummer"}
+            key={"drummer" + index}
           />
         ))}
       </div>

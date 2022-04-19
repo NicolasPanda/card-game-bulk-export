@@ -4,9 +4,12 @@ import Header from "../components/Header";
 
 function Home() {
   return (
-    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-800">
+    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-500">
       <Header />
-      <Link to="/concert">Concert</Link>
+      <Link to="/concerteasy">Concert Esay</Link>
+      <Link to="/concertmedium">Concert Medium</Link>
+      <Link to="/concerthard">Concert Hard</Link>
+      <Link to="/concerttour">Concert Tour</Link>
       <Link to="/artist">Artist</Link>
       <Link to="/artefact">Artefact</Link>
     </div>

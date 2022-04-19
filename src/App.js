@@ -9,7 +9,22 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/concert" element={<Concert />} />
+      <Route
+        path="/concerteasy"
+        element={<Concert request="concerteasy" type={"Easy"} />}
+      />
+      <Route
+        path="/concertmedium"
+        element={<Concert request="concertmedium" type={"Medium"} />}
+      />
+      <Route
+        path="/concerthard"
+        element={<Concert request="concerthard" type={"Hard"} />}
+      />
+      <Route
+        path="/concerttour"
+        element={<Concert request="concerttour" type={"Tour"} />}
+      />
       <Route path="/artist" element={<Artist />} />
       <Route path="/artefact" element={<Artefact />} />
     </Routes>

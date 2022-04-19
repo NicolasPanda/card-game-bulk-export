@@ -39,7 +39,7 @@ function Artefact() {
   };
 
   return (
-    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-800">
+    <div className="flex flex-col h-full min-h-screen text-gray-200 bg-gray-500">
       <Header />
 
       <div className="flex flex-col items-center justify-center my-14 gap-14">

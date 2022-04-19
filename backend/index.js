@@ -20,11 +20,41 @@ app.use(async (req, res, next) => {
   next();
 });
 
-app.get("/concert", async (req, res) => {
+app.get("/concerteasy", async (req, res) => {
   const getRows = await googleSheets.spreadsheets.values.get({
     auth,
     spreadsheetId,
-    range: "Concert!B3:M",
+    range: "ConcertFacile!B3:M",
+  });
+
+  res.send(getRows.data.values);
+});
+
+app.get("/concertmedium", async (req, res) => {
+  const getRows = await googleSheets.spreadsheets.values.get({
+    auth,
+    spreadsheetId,
+    range: "ConcertMedium!B3:M",
+  });
+
+  res.send(getRows.data.values);
+});
+
+app.get("/concerthard", async (req, res) => {
+  const getRows = await googleSheets.spreadsheets.values.get({
+    auth,
+    spreadsheetId,
+    range: "ConcertDificile!B3:M",
+  });
+
+  res.send(getRows.data.values);
+});
+
+app.get("/concerttour", async (req, res) => {
+  const getRows = await googleSheets.spreadsheets.values.get({
+    auth,
+    spreadsheetId,
+    range: "ConcertTournee!B3:M",
   });
 
   res.send(getRows.data.values);

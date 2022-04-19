@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="relative flex h-24 items-center justify-center bg-gray-500">
+    <div className="relative flex items-center justify-center h-24 bg-gray-800">
       <Link
-        className="absolute left-11 cursor-pointer select-none rounded-full bg-pink-500 px-5 py-2 hover:bg-pink-600 active:bg-pink-400"
+        className="absolute px-5 py-2 bg-pink-500 rounded-full cursor-pointer select-none left-11 hover:bg-pink-600 active:bg-pink-400"
         to="/"
       >
         Home

@@ -1,16 +1,14 @@
 import React from "react";
 
-import guitaristImage from "../img/new/guitarist.png";
-import signerImage from "../img/new/signer.png";
-import drummerImage from "../img/new/drummer.png";
-import drummerBorderImage from "../img/new/drummer-border.png";
-import signerBorderImage from "../img/new/signer-border.png";
-import guitaristBorderImage from "../img/new/guitarist-border.png";
+import guitaristImage from "../img/final/AssetsArtist/bg_artist_guitarist.png";
+import signerImage from "../img/final/AssetsArtist/bg_artist_singer.png";
+import drummerImage from "../img/final/AssetsArtist/bg_artist_drummer.png";
+import border from "../img/final/AssetsArtist/c_artist_contour.png";
 
 function ArtistCards({ innerRef, stats = [1, 2, 3], type = "drummer" }) {
   return (
     <div
-      className="relative flex h-[1021px] w-[735px] items-center justify-center bg-slate-200"
+      className="relative flex h-[750px] w-[625px] items-center justify-center bg-slate-200"
       ref={innerRef}
     >
       {type === "guitarist" && (
@@ -20,7 +18,6 @@ function ArtistCards({ innerRef, stats = [1, 2, 3], type = "drummer" }) {
             src={guitaristImage}
             alt=""
           />
-          <img className="absolute w-full" src={guitaristBorderImage} alt="" />
         </>
       )}
       {type === "signer" && (
@@ -30,7 +27,7 @@ function ArtistCards({ innerRef, stats = [1, 2, 3], type = "drummer" }) {
             src={signerImage}
             alt=""
           />
-          <img className="absolute w-full" src={signerBorderImage} alt="" />
+          }
         </>
       )}
       {type === "drummer" && (
@@ -40,17 +37,18 @@ function ArtistCards({ innerRef, stats = [1, 2, 3], type = "drummer" }) {
             src={drummerImage}
             alt=""
           />
-          <img className="absolute w-full" src={drummerBorderImage} alt="" />
         </>
       )}
-      <div className="absolute flex justify-around w-full px-4 bottom-28">
-        <p className={"text-center text-9xl font-extrabold text-[#ff7800]"}>
+
+      <img className="absolute w-full" src={border} alt="" />
+      <div className="absolute flex justify-around w-full px-4 bottom-10">
+        <p className={"text-center text-8xl font-extrabold text-[#ff7200]"}>
           {stats[0]}
         </p>
-        <p className={"text-center text-9xl font-extrabold text-[#f22e61]"}>
+        <p className={"text-center text-8xl font-extrabold text-[#00ffeb]"}>
           {stats[1]}
         </p>
-        <p className={"text-center text-9xl font-extrabold text-[#2d68da]"}>
+        <p className={"text-center text-8xl font-extrabold text-[#9900ff]"}>
           {stats[2]}
         </p>
       </div>
