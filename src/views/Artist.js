@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import ArtistCards from "../components/ArtistCards";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 const baseURL = "http://localhost:1337/";
 
@@ -36,13 +37,15 @@ function Artist() {
   }, [guitaristData, signerData, drummerData]);
 
   useEffect(() => {
-    cardsRef.current.forEach((element, index) => {
-      html2canvas(element).then((canvas) => {
-        canvas.toBlob((blob) => {
-          zip.file(`Cards_Artist_${index + 1}.png`, blob);
+    setTimeout(function () {
+      cardsRef.current.forEach((element, index) => {
+        html2canvas(element).then((canvas) => {
+          canvas.toBlob((blob) => {
+            zip.file(`Cards_Artist_${index + 1}.png`, blob);
+          });
         });
       });
-    });
+    }, 5000);
   }, [guitaristData, signerData, drummerData, zip]);
 
   const handleExportCards = () => {
